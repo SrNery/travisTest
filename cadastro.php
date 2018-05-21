@@ -28,39 +28,40 @@
     <div>          
         <article >
             <h1 id="cad">Cadastro</h1>             
-        <div>
-            <form action="/action_page.php">
-                <label for="name">Nome Completo:</label>
-                <input type="text" id="name" name="nomeCompleto" placeholder="Seu nome..">
+        </article>
+        <form method="post" action="cadastrar.php">
+            <Fildset id="usuario"><legend>Identificação do Usuário</legend>
 
-                <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" name="cpf" placeholder="Insira o CPF..">
+                <p>Nome:<input type="text" id="tNome" nome="cNome" placeholder="Seu nome.."></p>
 
+                <p>CPF:<input type="text" id="tCpf" nome="cCpf" placeholder="Seu CPF.."></p>
 
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" placeholder="Seu Endereço..">
+                <Fildset = id"sexo"><legend>Sexo:</legend>
+                    <input type="radio" id="cMas" nome="tSexo"/><label for="cMas">Masculino</label>
+                    <input type="radio" id="cFem" nome="tSexo"/><label for="cFem">Feminino</label>                    
+                </fildset>
 
-                <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" placeholder="Seu E-mail..">
+                <p>E-Mail:<input type="email" id="tEmail" nome="cEmail" placeholder="Digite seu E-mail"></p>        
+                <fildset><leged>Identificação:</legend>
+                <input type="radio" id="cUser" nome="tIdent"/><label for="cUser">Usuário</label>
+                <input type="radio" id="cAdm" nome="tIdent"/><label for="cAdm">Administrador</label>
+                </fildset>
 
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" value="123456">
-                <img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="/><br>
+                <p>Data de Nascimento:<input type="date" id="tDNasc" nome="cDNasc"</p>
+            </Fildset>
 
-                <label for="pais">País</label>
-                <select id="pais" name="pais">
-                <option value="australia">Australia</option>
-                <option value="usa">Brasil</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>                
-                </select>            
-                <input type="submit" value="Cadastrar">
-            </form>
-            </article>
-        </div>
+            <Fildset id="endereco"><legend>Endereço do Usuário</legend>
+                <p>Logradouro: <input type="text" id="cRua" name="tRua" placeholder="Rua, Av, Trav,.."> </p>
+                <p>Numero: <input type="number" id="cNum" name="tNum" min="0" max"9999" placeholder="Nmero da Casa"></p>
+                <p>Cidade: <input type="text" id="cCidade" name="tCidade" placeholder="Cidade Atual"></p>
+                <p>Estado: <input type="text" id="cUF" name="tUF" placeholder="Estado Atual"></p>
+                <p>CEP: <input type="text" id="cCep" name="tCep" placeholder="Somente Números"></p>
+            </Fildset>
+            [botão enviar]
+        </form>    
     </div>  
         
     <!--RODAPE-->
-    <footer>Copyright &copy; W3Schools.com</footer>
+    <footer>Copyright &copy; Rodrigo&Najla</footer>
 </body>
 </html>
