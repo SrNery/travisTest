@@ -11,55 +11,74 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <!--Topo do Site-->
-    <div class='topo'>        
-        <a id='nome_site' href='index.php'>Cadastro<span id='dotcom'>.com</span></a>
-        <div id='referencia' style="font-family:'Segoe UI',Arial,sans-serif">O Melhor Site de Cadstro do IFBA</div>       
-    </div>
-     <!--MENU-->
-    <nav class="menu">
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="cadastro.php" class="active" style="border-right: 2px solid #bbb;">Cadastro</a></li>
-            <li><a href="relatorio.php">Relatório</a></li>            
-        </ul>
-    </nav>
-    <!--Corpo do Site-->
-    <div>          
-        <article >
-            <h1 id="cad">Cadastro</h1>             
-        </article>
-        <form method="post" action="cadastrar.php">
-            <Fildset id="usuario"><legend>Identificação do Usuário</legend>
-
-                <p>Nome:<input type="text" id="tNome" nome="cNome" placeholder="Seu nome.."></p>
-
-                <p>CPF:<input type="text" id="tCpf" nome="cCpf" placeholder="Seu CPF.."></p>
-
-                <Fildset = id"sexo"><legend>Sexo:</legend>
-                    <input type="radio" id="cMas" nome="tSexo"/><label for="cMas">Masculino</label>
-                    <input type="radio" id="cFem" nome="tSexo"/><label for="cFem">Feminino</label>                    
-                </fildset>
-
-                <p>E-Mail:<input type="email" id="tEmail" nome="cEmail" placeholder="Digite seu E-mail"></p>        
-                <fildset><leged>Identificação:</legend>
-                <input type="radio" id="cUser" nome="tIdent"/><label for="cUser">Usuário</label>
-                <input type="radio" id="cAdm" nome="tIdent"/><label for="cAdm">Administrador</label>
-                </fildset>
-
-                <p>Data de Nascimento:<input type="date" id="tDNasc" nome="cDNasc"</p>
-            </Fildset>
-
-            <Fildset id="endereco"><legend>Endereço do Usuário</legend>
-                <p>Logradouro: <input type="text" id="cRua" name="tRua" placeholder="Rua, Av, Trav,.."> </p>
-                <p>Numero: <input type="number" id="cNum" name="tNum" min="0" max"9999" placeholder="Nmero da Casa"></p>
-                <p>Cidade: <input type="text" id="cCidade" name="tCidade" placeholder="Cidade Atual"></p>
-                <p>Estado: <input type="text" id="cUF" name="tUF" placeholder="Estado Atual"></p>
-                <p>CEP: <input type="text" id="cCep" name="tCep" placeholder="Somente Números"></p>
-            </Fildset>
-            [botão enviar]
-        </form>    
-    </div>  
+   <?php
+if (isset($_POST['BTEnvia'])) {
+	
+	//Variaveis de POST, Alterar somente se necessário 
+	//====================================================
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$telefone = $_POST['telefone']; 
+	$mensagem = $_POST['mensagem'];
+	//====================================================
+	
+	//REMETENTE --> ESTE EMAIL TEM QUE SER VALIDO DO DOMINIO
+	//==================================================== 
+	$email_remetente = "email@doseudominio"; // deve ser uma conta de email do seu dominio 
+	//====================================================
+	
+	//Configurações do email, ajustar conforme necessidade
+	//==================================================== 
+	$email_destinatario = "email@querecebe"; // pode ser qualquer email que receberá as mensagens
+	$email_reply = "$email"; 
+	$email_assunto = "Contato formmail"; // Este será o assunto da mensagem
+	//====================================================
+	
+	//Monta o Corpo da Mensagem
+	//====================================================
+	$email_conteudo = "Nome = $nome \n"; 
+	$email_conteudo .= "Email = $email \n";
+	$email_conteudo .= "Telefone = $telefone \n"; 
+	$email_conteudo .= "Mensagem = $mensagem \n"; 
+	//====================================================
+	
+	//Seta os Headers (Alterar somente caso necessario) 
+	//==================================================== 
+	$email_headers = implode ( "\n",array ( "From: $email_remetente", "Reply-To: $email_reply", "Return-Path: $email_remetente","MIME-Version: 1.0","X-Priority: 3","Content-Type: text/html; charset=UTF-8" ) );
+	//====================================================
+	
+	//Enviando o email 
+	//==================================================== 
+	if (mail ($email_destinatario, $email_assunto, nl2br($email_conteudo), $email_headers)){ 
+					echo "</b>E-Mail enviado com sucesso!</b>"; 
+					} 
+			else{ 
+					echo "</b>Falha no envio do E-Mail!</b>"; } 
+	//====================================================
+} 
+?>
+	
+	<form action="<? $PHP_SELF; ?>" method="POST"> 
+	<p> 
+		Nome:<br /> 
+		<input type="text" size="30" name="nome"> 
+	</p>   
+	<p> 
+		E-mail:<br /> 
+		<input type="text" size="30" name="email">		
+	</p>   
+	<p> 
+		Telefone:<br /> 
+		<input type="text" size="35" name="telefone"> 
+	</p>   
+	<p> 
+		Mensagem:<br /> 
+		<input type="text" size="35" name="mensagem"> 
+	</p>   
+	<p>
+          <input type="submit" name="BTEnvia" value="Enviar"> 
+	  <input type="reset" name="BTApaga" value="Apagar">
+        </p>
         
     <!--RODAPE-->
     <footer>Copyright &copy; Rodrigo&Najla</footer>
